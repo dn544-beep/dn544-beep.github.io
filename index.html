@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dheeraj Nali — Finance & Data Science, Rutgers</title>
+<meta name="description" content="Portfolio of Dheeraj Nali, Finance and Data Science student at Rutgers Business School.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EEF1F4;
+    --ink: #1B2A3A;
+    --muted: #556472;
+    --rule: #C6CFD8;
+    --ledger: #2F6B4F;
+    --marker: #F4D35E;
+    --marker-ink: #1B2A3A;
+    --surface: #F8FAFB;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141C25; --ink: #E4E9EE; --muted: #9AA8B5; --rule: #2C3946;
+      --ledger: #7FC4A0; --marker: #8A7524; --marker-ink: #FFF8DC; --surface: #1A2430;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141C25; --ink: #E4E9EE; --muted: #9AA8B5; --rule: #2C3946;
+    --ledger: #7FC4A0; --marker: #8A7524; --marker-ink: #FFF8DC; --surface: #1A2430;
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 "Public Sans", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--ledger); text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--ledger); outline-offset: 3px; border-radius: 2px; }
+
+  .page { max-width: 64rem; margin: 0 auto; padding: 4rem 1.5rem 3rem; }
+
+  /* Hero */
+  header.hero { padding-bottom: 3.5rem; border-bottom: 2px solid var(--ink); }
+  .hero h1 {
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: clamp(2.75rem, 8vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.75rem;
+  }
+  .statement {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    line-height: 1.45;
+    max-width: 38ch;
+    margin: 0 0 2rem;
+  }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; color: var(--muted); font-size: 0.95rem; margin: 0; padding: 0; list-style: none; }
+  .hero-meta a { font-weight: 500; }
+
+  /* Sections: label column + content column, like a model's row headers */
+  section { display: grid; grid-template-columns: 11rem 1fr; gap: 2rem; padding: 3.5rem 0; border-bottom: 1px solid var(--rule); }
+  section > h2 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 600; font-size: 1.5rem; line-height: 1.2;
+    margin: 0; position: sticky; top: calc(1.5rem + env(safe-area-inset-top, 0px)); align-self: start;
+  }
+
+  /* Skills */
+  .skill-groups { display: grid; gap: 2rem; }
+  .skill-group h3 { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin: 0 0 0.6rem; }
+  .skill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.55rem 1.4rem; }
+  .skill-list li { font-size: 1.05rem; }
+  .hl {
+    background-image: linear-gradient(var(--marker), var(--marker));
+    background-repeat: no-repeat;
+    background-size: 100% 62%;
+    background-position: 0 85%;
+    color: var(--marker-ink);
+    padding: 0 0.15em;
+    margin: 0 -0.15em;
+    font-weight: 500;
+    animation: swipe 0.5s ease-out both;
+  }
+  .skill-list li:nth-child(2) .hl { animation-delay: 0.08s; }
+  .skill-list li:nth-child(3) .hl { animation-delay: 0.16s; }
+  .skill-list li:nth-child(4) .hl { animation-delay: 0.24s; }
+  @keyframes swipe { from { background-size: 0% 62%; } to { background-size: 100% 62%; } }
+  @media (prefers-reduced-motion: reduce) { .hl { animation: none; } }
+
+  /* Projects */
+  .projects { display: grid; gap: 3rem; }
+  .project h3 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.45rem; font-weight: 600; line-height: 1.25; margin: 0 0 0.3rem;
+  }
+  .project .context { color: var(--muted); font-size: 0.95rem; margin: 0 0 1rem; }
+  .project p.desc { margin: 0 0 1.25rem; max-width: 62ch; }
+
+  .figures-wrap { overflow-x: auto; margin: 0 0 1.25rem; }
+  table.figures { border-collapse: collapse; min-width: 22rem; font-variant-numeric: tabular-nums; background: var(--surface); }
+  .figures td { padding: 0.45rem 1rem; border-bottom: 1px solid var(--rule); font-size: 0.95rem; }
+  .figures tr:last-child td { border-bottom: none; }
+  .figures td:last-child { text-align: right; font-weight: 600; white-space: nowrap; }
+  .figures td:first-child { color: var(--muted); }
+
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 0; list-style: none; font-weight: 500; font-size: 0.95rem; }
+  .links .note { color: var(--muted); font-weight: 400; }
+
+  footer { padding: 2.5rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+  @media (max-width: 720px) {
+    .page { padding-top: 2.5rem; }
+    section { grid-template-columns: 1fr; gap: 1.25rem; padding: 2.5rem 0; }
+    section > h2 { position: static; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <h1>Dheeraj Nali</h1>
+    <!-- 1. Personal statement -->
+    <p class="statement">Finance and Data Science student at Rutgers Business School who builds financial models, keeps the books for a small business, and is preparing for a career in investment banking.</p>
+    <ul class="hero-meta">
+      <li>B.S. Finance & Data Science, Rutgers Business School, May 2029</li>
+      <li>Monroe Township, NJ</li>
+      <li><a href="mailto:dheerajnali6@gmail.com">dheerajnali6@gmail.com</a></li>
+      <li><a href="resume.pdf">Résumé (PDF)</a></li>
+      <!-- Add your LinkedIn: <li><a href="https://www.linkedin.com/in/YOUR-HANDLE">LinkedIn</a></li> -->
+    </ul>
+  </header>
+
+  <main>
+    <!-- 2. Skills -->
+    <section id="skills" aria-labelledby="skills-h">
+      <h2 id="skills-h">Skills</h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Financial modeling and valuation</h3>
+          <ul class="skill-list">
+            <li><span class="hl">Three-statement modeling</span></li>
+            <li><span class="hl">Revenue builds</span></li>
+            <li><span class="hl">Comparable company analysis</span></li>
+            <li><span class="hl">Scenario analysis</span></li>
+            <li>EV/EBITDA and P/E multiples</li>
+            <li>Debt and working capital schedules</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Accounting</h3>
+          <ul class="skill-list">
+            <li><span class="hl">Ledger reconciliation</span></li>
+            <li><span class="hl">Bookkeeping</span></li>
+            <li>10-K and 10-Q analysis</li>
+            <li>Cash flow management</li>
+            <li>Margin and inventory analysis</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <ul class="skill-list">
+            <li><span class="hl">Microsoft Excel</span></li>
+            <li>VBA macros</li>
+            <li>PowerPoint</li>
+            <li>Wall Street Prep training</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Professional</h3>
+          <ul class="skill-list">
+            <li>Equity research and stock pitching</li>
+            <li>Market research</li>
+            <li>Client communication</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Projects -->
+    <section id="projects" aria-labelledby="projects-h">
+      <h2 id="projects-h">Projects</h2>
+      <div class="projects">
+
+        <article class="project">
+          <h3>Seagate Technology (STX) stock pitch</h3>
+          <p class="context">Bender Trust Stock Pitch Competition, Little Investment Bankers of Rutgers</p>
+          <p class="desc">Built a five-year revenue model for Seagate across its OEM, distributor, and retail channels with bull, base, and bear cases, then linked it to a projected income statement and a comparable company valuation that supported a Strong Buy recommendation.</p>
+          <div class="figures-wrap">
+            <table class="figures">
+              <tr><td>Base-case revenue, 2025 → 2030</td><td>$9.1B → $19.5B</td></tr>
+              <tr><td>Implied share price range</td><td>$321–$473</td></tr>
+              <tr><td>Implied upside</td><td>14–69%</td></tr>
+              <tr><td>Valuation method</td><td>EV/EBITDA, P/E comps</td></tr>
+            </table>
+          </div>
+          <ul class="links">
+            <!-- Upload your deck and model to the repo with these file names, or change the links -->
+            <li><a href="seagate-pitch.pdf">Pitch deck (PDF)</a></li>
+            <li><a href="seagate-model.xlsx">Excel model</a></li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h3>Margin and inventory analysis</h3>
+          <p class="context">Lakshmi Signatures, bookkeeping and financial analysis</p>
+          <p class="desc">Analyzed sales margins and inventory costs across a clothing business's catalog in Excel, identifying the highest- and lowest-margin products and recommending pricing and restocking changes. I also oversee the business's monthly cash flow and reconcile its ledgers against bank statements.</p>
+          <div class="figures-wrap">
+            <table class="figures">
+              <tr><td>Products analyzed</td><td>300+</td></tr>
+              <tr><td>Margin improvement</td><td>4%</td></tr>
+              <tr><td>Monthly cash flow managed</td><td>$7,000+</td></tr>
+              <tr><td>Transactions reconciled</td><td>600+</td></tr>
+            </table>
+          </div>
+          <ul class="links">
+            <li class="note">Client data is confidential; a sanitized walkthrough is available on request.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Get in touch at <a href="mailto:dheerajnali6@gmail.com">dheerajnali6@gmail.com</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
